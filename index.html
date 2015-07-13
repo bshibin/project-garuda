@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ui.bootstrap.demo" id="top">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<link rel="icon" href="assets/favicon.ico" />
+<title>Angular directives for Bootstrap</title>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="assets/grouponStyle.css"/>
+<link rel="stylesheet" href="assets/demo.css"/>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.7/fastclick.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.0.0/FileSaver.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.4.0/jszip.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular-animate.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular-touch.min.js"></script>
+<script src="ui-bootstrap-tpls-0.13.0.min.js"></script>
+<script src="assets/plunker.js"></script>
+<script src="assets/app.js"></script>
+
+
+<!-- slider_assets-->
+<link rel="stylesheet" href="assets/slider_assets/slick.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="assets/slider_assets/anguler/slick.min.js"></script>
+<script src="assets/slider_assets/slick.min.js"></script>
+
+<script>
+//Requires JQuery or Zepto
+  $(document).ready(function(){
+
+  // Cache Header
+  var $header = $('.global-header');
+
+  // Get height of global-header to use later as starting point
+  var $hHeight = $header.height();
+
+  // Set initial position to current position on page
+  var prevTop = $(window).scrollTop();
+
+  // Scroll event
+  $(window).on('scroll', function(e) {
+    st = $(this).scrollTop(); // Set scroll location
+    if (st > prevTop && st > $hHeight) {
+      $header.addClass('global-header-scrolling');
+    } else {
+      $header.removeClass('global-header-scrolling');
+    }
+    prevTop = st;
+  });
+
+});
+</script>
+ 
+</head>
+<body class="ng-scope ng-cloak" ng-controller="MainCtrl">
+
+ <style>
+ img{ max-width:100%; height:auto;}
+ .container{ max-width:1000px}
+ 
+ </style>
+<header class="navbar navbar-dark" id="header" hide-header hide-offset="60">
+  <div class="navbar-inner">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-3" ng-click="isCollapsed = !isCollapsed"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> 
+        <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      </div>
+      <nav class="hidden-xs">
+        <ul class="nav navbar-nav">
+          <a href="#top" role="button" class="navbar-brand"> <img src="img/logo.png" width="148" height="25" alt=""/>   <input class="form-control"></a>
+         
+             
+          
+          <li class="dropdown" dropdown> <a role="button" class="dropdown-toggle" dropdown-toggle> Directives <b class="caret"></b> </a>
+            <ul class="dropdown-menu">
+              <li><a href="#accordion">Accordion</a></li>
+              <li><a href="#alert">Alert</a></li>
+              <li><a href="#buttons">Buttons</a></li>
+              <li><a href="#carousel">Carousel</a></li>
+              <li><a href="#collapse">Collapse</a></li>
+              <li><a href="#datepicker">Datepicker</a></li>
+              <li><a href="#dropdown">Dropdown</a></li>
+              <li><a href="#modal">Modal</a></li>
+              <li><a href="#pagination">Pagination</a></li>
+              <li><a href="#popover">Popover</a></li>
+              <li><a href="#progressbar">Progressbar</a></li>
+              <li><a href="#rating">Rating</a></li>
+              <li><a href="#tabs">Tabs</a></li>
+              <li><a href="#timepicker">Timepicker</a></li>
+              <li><a href="#tooltip">Tooltip</a></li>
+              <li><a href="#typeahead">Typeahead</a></li>
+            </ul>
+          </li>
+          <li><a href="#getting_started">Getting started</a></li>
+        </ul>
+      </nav>
+      <nav class="visible-xs" collapse="!isCollapsed">
+        <ul class="nav navbar-nav">
+          <li><a href="#getting_started" ng-click="isCollapsed = !isCollapsed">Getting started</a></li>
+          <li><a href="#directives_small" ng-click="isCollapsed = !isCollapsed">Directives</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+ 
+
+
+
+<div style=" width:100%; height:50px; background:#313131; margin-top: 51px;"></div>
+
+ <div class="container">
+    <div style=" float:left; position:absolute; width:200px; height:800px; background:red">
+     <ul>
+      <li><a href="#accordion">Accordion</a></li>
+      <li><a href="#alert">Alert</a></li>
+      <li><a href="#buttons">Buttons</a></li>
+      <li><a href="#carousel">Carousel</a></li>
+      <li><a href="#collapse">Collapse</a></li>
+      <li><a href="#datepicker">Datepicker</a></li>
+      <li><a href="#dropdown">Dropdown</a></li>
+      <li><a href="#modal">Modal</a></li>
+      <li><a href="#pagination">Pagination</a></li>
+      <li><a href="#popover">Popover</a></li>
+      <li><a href="#progressbar">Progressbar</a></li>
+      <li><a href="#rating">Rating</a></li>
+      <li><a href="#tabs">Tabs</a></li>
+      <li><a href="#timepicker">Timepicker</a></li>
+      <li><a href="#tooltip">Tooltip</a></li>
+      <li><a href="#typeahead">Typeahead</a></li>
+     </ul>
+     
+     <ul>
+    </ul>
+     
+     
+    </div>
+   <div style="float:left; width:100%; height:800px; background:#17309B; padding-left:215px;" ng-app="slick"> 
+   
+   
+  
+   <div class="col-xs-4" style=" background:#260606; height:800px;"> <img src="https://img.grouponcdn.com/deal/65CvsnAraJhcTyGqqHYF/KX-4200x2520/v1/c220x134.jpg" alt=""/></div>
+   <div class="col-xs-4" style=" background:blue; height:800px;"> <img src="img/asdasdd.png" alt=""/></div>
+   <div class="col-xs-4" style=" background:#260606;	  height:800px;"> <img src="img/asdasdd.png" alt=""/></div>
+ 
+   
+   </div>
+   
+   
+   <div class="multiple-items slick" style=" float:left; width:100%; background:red;">
+    <div><img src="http://kenwheeler.github.io/slick/img/fonz1.png"> </div>
+    <div><img src="http://kenwheeler.github.io/slick/img/fonz2.png"> </div>
+    <div><img src="http://kenwheeler.github.io/slick/img/fonz3.png"></div>
+     <div><img src="http://kenwheeler.github.io/slick/img/fonz1.png"></div>
+    <div><img src="http://kenwheeler.github.io/slick/img/fonz2.png"></div>
+    <div><img src="http://kenwheeler.github.io/slick/img/fonz3.png"></div>
+     <div><img src="http://kenwheeler.github.io/slick/img/fonz1.png"></div>
+    <div><img src="http://kenwheeler.github.io/slick/img/fonz2.png"></div>
+    <div><img src="http://kenwheeler.github.io/slick/img/fonz3.png"></div>
+  </div>
+ 
+ 
+ 
+ <br>sad
+  <br>sad <br>sad <br>sad <br>sad <br>sad <br>sad <br>sad <br>sad <br>sad <br>sad <br>sad <br>sad <br>sad <br>sad <br>sad <br>sad <br>sad <br>sad <br>sad <br>sad <br>sad <br>sad <br>sad <br>sad <br>sad
+<script>
+ 
+
+
+
+$('.multiple-items').slick({
+  dots: true,
+  infinite: false,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 4,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+</script>
+     	  
+ 
+
+
+
+           
+    </div>  
+ </div>
+
+
+ 
+
+ 
+
+
+
+
+</body>
+</html>
